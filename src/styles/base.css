@@ -1,0 +1,18 @@
+:root {
+  color-scheme: light;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid rgb(37 99 235 / 32%);
+  outline-offset: 4px;
+}
