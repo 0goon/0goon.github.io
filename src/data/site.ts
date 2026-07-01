@@ -79,7 +79,7 @@ export const experiences = [
     ],
   },
   {
-    period: "2022.12 — 2023.02",
+    period: "2022.12 — 2023.02(성균관대학교 산학협력)",
     company: "VAIV",
     role: "Frontend Developer",
     summary:
