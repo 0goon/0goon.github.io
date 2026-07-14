@@ -1,60 +1,4 @@
-export type PostParagraph = {
-  id: string;
-  type: "paragraph";
-  value: string;
-};
-
-export type PostImage = {
-  id: string;
-  type: "image";
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-  caption?: string;
-};
-
-export type PostTable = {
-  id: string;
-  type: "table";
-  caption: string;
-  headers: readonly string[];
-  rows: readonly (readonly string[])[];
-  rowHeaderColumn?: number;
-};
-
-export type PostCode = {
-  id: string;
-  type: "code";
-  language: string;
-  value: string;
-};
-
-export type PostQuote = {
-  id: string;
-  type: "quote";
-  value: string;
-};
-
-export type PostBulletList = {
-  id: string;
-  type: "bullets";
-  items: readonly string[];
-};
-
-export type PostContentBlock =
-  | PostParagraph
-  | PostImage
-  | PostTable
-  | PostCode
-  | PostQuote
-  | PostBulletList;
-
-export type PostSection = {
-  id: string;
-  heading: string;
-  blocks: readonly PostContentBlock[];
-};
+import type { ContentSection } from "@/data/content";
 
 export type BlogPost = {
   slug: string;
@@ -65,7 +9,7 @@ export type BlogPost = {
   displayDate: string;
   readingTime: string;
   tags: readonly string[];
-  sections: readonly PostSection[];
+  sections: readonly ContentSection[];
 };
 
 export type PostPreview = Pick<

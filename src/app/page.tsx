@@ -11,18 +11,21 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { PostCard } from "@/components/post-card";
+import { ProjectCard } from "@/components/project-card";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { posts } from "@/data/posts";
+import { projectPreviews } from "@/data/projects";
 import {
   awards,
   experiences,
   profileNotes,
-  projects,
   siteConfig,
   skillGroups,
   values,
 } from "@/data/site";
+
+const featuredProjects = projectPreviews.slice(0, 3);
 
 export default function HomePage() {
   return (
@@ -324,70 +327,34 @@ export default function HomePage() {
       >
         <div className="mx-auto w-full max-w-[1160px] px-5 max-[760px]:px-4">
           <ScrollReveal>
-            <SectionHeading
-              eyebrow="03 · SELECTED WORK"
-              title="생각을 결과로 만든 프로젝트"
-              description="문제 정의부터 구현과 회고까지, 주도적으로 참여한 작업입니다."
-            />
+            <div className="relative">
+              <SectionHeading
+                eyebrow="03 · SELECTED WORK"
+                title="생각을 결과로 만든 프로젝트"
+                description="문제 정의부터 구현과 회고까지, 주도적으로 참여한 작업입니다."
+              />
+              <Link
+                className="absolute right-0 bottom-[54px] inline-flex items-center gap-2 text-[13px] font-bold text-blog-primary [&_svg]:transition-transform [&_svg]:duration-200 hover:[&_svg]:translate-x-[3px] max-[760px]:static max-[760px]:mt-[22px]"
+                href="/projects"
+              >
+                모든 프로젝트 보기
+                <ArrowRight size={17} aria-hidden="true" />
+              </Link>
+            </div>
           </ScrollReveal>
 
           <div className="grid grid-cols-3 gap-[18px] pt-[52px] max-[960px]:grid-cols-2 max-[760px]:grid-cols-1">
-            {projects.map((project, index) => (
+            {featuredProjects.map((project, index) => (
               <ScrollReveal
                 className={
-                  index === projects.length - 1
+                  index === featuredProjects.length - 1
                     ? "max-[960px]:col-span-2 max-[760px]:col-span-1"
                     : ""
                 }
-                key={project.title}
+                key={project.slug}
                 delay={index * 80}
               >
-                <article className="group h-full overflow-hidden rounded-[20px] border border-blog-border bg-white transition-[translate,border-color,box-shadow] duration-200 hover:-translate-y-[5px] hover:border-sky-300 hover:shadow-card">
-                  <Link
-                    className="flex h-full flex-col p-[25px]"
-                    href={project.href}
-                    aria-label={`${project.title} 보기`}
-                  >
-                    <div className="flex items-center justify-between text-blog-primary">
-                      <span className="font-mono text-[10px] font-bold tracking-[0.14em]">
-                        {project.eyebrow}
-                      </span>
-                      <ArrowUpRight
-                        className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                        size={21}
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <div
-                      className="relative mt-[25px] mb-[27px] flex h-[145px] items-center justify-center overflow-hidden rounded-[14px] bg-[linear-gradient(rgba(255,255,255,.45)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.45)_1px,transparent_1px),linear-gradient(135deg,#e0f2fe,#dbeafe)] bg-size-[22px_22px,22px_22px,auto]"
-                      aria-hidden="true"
-                    >
-                      <span className="relative z-[2] font-mono text-[38px] font-[720] text-white [text-shadow:0_4px_18px_rgba(37,99,235,0.18)]">
-                        {project.index}
-                      </span>
-                      <div className="absolute h-[86px] w-[86px] rotate-12 rounded-3xl bg-linear-to-br from-blog-primary to-blog-sky shadow-[0_17px_30px_rgba(37,99,235,0.24)] transition-[rotate,scale] duration-300 group-hover:rotate-3 group-hover:scale-105" />
-                    </div>
-                    <h3 className="text-xl font-bold tracking-[-0.035em]">
-                      {project.title}
-                    </h3>
-                    <p className="mt-3 mb-[22px] text-[13px] leading-[1.75] text-blog-muted">
-                      {project.description}
-                    </p>
-                    <ul
-                      className="mt-auto flex flex-wrap gap-[7px]"
-                      aria-label="사용 기술"
-                    >
-                      {project.tags.map((tag) => (
-                        <li
-                          className="rounded-full bg-blog-soft px-[9px] py-1.5 font-mono text-[9px] font-semibold text-blog-primary"
-                          key={tag}
-                        >
-                          {tag}
-                        </li>
-                      ))}
-                    </ul>
-                  </Link>
-                </article>
+                <ProjectCard project={project} featured={index === 0} />
               </ScrollReveal>
             ))}
           </div>

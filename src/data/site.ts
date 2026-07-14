@@ -93,36 +93,6 @@ export const experiences = [
   },
 ] as const;
 
-export const projects = [
-  {
-    index: "01",
-    title: "Product Design System",
-    eyebrow: "SYSTEM",
-    description:
-      "제품 전반의 시각 언어와 상호작용을 일관되게 만드는 컴포넌트 시스템입니다. 접근성과 확장 가능한 API를 함께 설계했습니다.",
-    tags: ["React", "TypeScript", "Storybook"],
-    href: "/#contact",
-  },
-  {
-    index: "02",
-    title: "Content Platform",
-    eyebrow: "PRODUCT",
-    description:
-      "콘텐츠를 빠르게 발견하고 깊이 읽을 수 있도록 정보 구조와 렌더링 전략을 개선한 웹 플랫폼입니다.",
-    tags: ["Next.js", "SSG", "Web Vitals"],
-    href: "/posts",
-  },
-  {
-    index: "03",
-    title: "Stateful Interface Lab",
-    eyebrow: "EXPERIMENT",
-    description:
-      "복잡한 UI 흐름을 예측 가능한 상태 모델로 표현하고 팀이 시각적으로 공유할 수 있게 만든 인터랙션 실험입니다.",
-    tags: ["XState", "React", "Testing"],
-    href: "/posts/xstate-scroll-interface",
-  },
-] as const;
-
 export const awards = [
   {
     id: "award-01",

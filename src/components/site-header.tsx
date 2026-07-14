@@ -9,7 +9,7 @@ import { siteConfig } from "@/data/site";
 const navigation = [
   { label: "소개", href: "/#about", rootOnly: true },
   { label: "경력", href: "/#experience", rootOnly: true },
-  { label: "프로젝트", href: "/#projects", rootOnly: true },
+  { label: "프로젝트", href: "/projects", rootOnly: false },
   { label: "글", href: "/posts", rootOnly: false },
   { label: "수상", href: "/#awards", rootOnly: true },
 ] as const;
